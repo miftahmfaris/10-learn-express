@@ -4,6 +4,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+const db = require("./connection");
+
 const PORT = process.env.PORT;
 const app = express();
 
