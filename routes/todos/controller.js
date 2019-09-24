@@ -1,8 +1,9 @@
-const collections = require("../../connection");
+const db = require("../../connection");
 
 module.exports = {
     getAll: (req, res) => {
-        collections.todos
+        db.get()
+            .collection("todos")
             .find({})
             .toArray()
             .then(result => {
@@ -16,7 +17,8 @@ module.exports = {
     getById: (req, res) => {
         const name = req.params.name;
 
-        collections.todos
+        db.get()
+            .collection("todos")
             .findOne({ name: name })
             .then(result => {
                 res.send({ message: "Get one data", data: result });
@@ -35,7 +37,8 @@ module.exports = {
     },
 
     create: (req, res) => {
-        collections.todos
+        db.get()
+            .collection("todos")
             .insertOne({ name: "coba", todo: "Plays Switch" })
             .then(result => {
                 res.send({ message: "Data succesfully created", data: result });

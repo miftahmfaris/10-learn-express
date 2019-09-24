@@ -18,6 +18,8 @@ app.get("/", (req, res) => {
     res.send({ message: process.env });
 });
 
-app.listen(PORT, () => {
-    console.log(`this port listen in ${PORT}`);
+db.connect(() => {
+    app.listen(PORT, () => {
+        console.log(`this port listen in ${PORT}`);
+    });
 });
